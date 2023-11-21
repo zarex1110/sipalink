@@ -57,37 +57,44 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tag::create([
-            'title' => 'bagianumum',
+            'title' => 'Bagian Umum',
+            'slug' => 'bagian-umum',
             'description' => 'Berisi tentang link yang digunakan oleh Bagian Umum BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'nerwilis',
+            'title' => 'Nerwilis',
+            'slug' => 'nerwilis',
             'description' => 'Berisi tentang link yang digunakan oleh Nerwilis BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'produksi',
+            'title' => 'Produksi',
+            'slug' => 'produksi',
             'description' => 'Berisi tentang link yang digunakan oleh Produksi BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'distirbusi',
+            'title' => 'Distribusi',
+            'slug' => 'distribusi',
             'description' => 'Berisi tentang link yang digunakan oleh Distribusi BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'pengolahan',
+            'title' => 'Pengolahan',
+            'slug' => 'pengolahan',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'sosial',
+            'title' => 'Sosial',
+            'slug' => 'sosial',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
-            'title' => 'bps',
+            'title' => 'BPS',
+            'slug' => 'bps',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
         ]);
 
@@ -96,7 +103,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'KipApp',
             'description' => 'Aplikasi penilaian Kinerja Pegawai',
             'link' => 'https://webapps.bps.go.id/kipapp/',
-            'tag' => '1',
+            'tags_id' => '1',
             'created_by' => '1'
         ]);
 
@@ -104,10 +111,10 @@ class DatabaseSeeder extends Seeder
             'title' => 'Simpeg BPS',
             'description' => 'Aplikasi penilaian Kepegawaian',
             'link' => 'https://simpeg.bps.go.id/',
-            'tag' => '1',
+            'tags_id' => '1',
             'created_by' => '1'
         ]);
 
-        Sipalink::factory(20)->create();
+        Sipalink::factory(50)->create();
     }
 }

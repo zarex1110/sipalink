@@ -13,6 +13,6 @@ class Tag extends Model
 
     public function sipalink()
     {
-        return $this->hasMany(Tag::class);
+        return $this->hasMany(Sipalink::class);
     }
 }

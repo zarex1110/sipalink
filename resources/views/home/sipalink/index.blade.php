@@ -51,7 +51,7 @@
                 data-aos-delay="100">
                 <div class="icon-box">
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
-                        <img src="assets/img/logo/all.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
+                        <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
                         <h4><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
@@ -78,9 +78,9 @@
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-all">Umum</li>
-            <li data-filter=".filter-umum">Bagian Umum</li>
-            <li data-filter=".filter-pengolahan">pengolahan</li>
+            <li data-filter=".filter-bps">Umum</li>
+            <li data-filter=".filter-bagian-umum">Bagian Umum</li>
+            <li data-filter=".filter-pengolahan">Pengolahan</li>
             <li data-filter=".filter-produksi">Produksi</li>
             <li data-filter=".filter-sosial">Sosial</li>
             <li data-filter=".filter-nerwilis">Nerwilis</li>
@@ -91,16 +91,16 @@
 
             @foreach ( $links as $link )
             <div class="row">
-                <div class="col-lg-3 col-md-6 portfolio-item filter-umum">
+                <div class="col-lg-3 col-md-6 portfolio-item filter-{{$link->tags->slug}}">
                     <div class="d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
                             {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
-                            <img src="assets/img/logo/all.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
+                            <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
                             {{-- {{ image($link-> link) }} --}}
                             <h5><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h5>
                             {{-- <p>{{ $link -> link }}</p> --}}
                             <p>{{ $link -> link }}</p>
-                            <p>{{ $link-> tag}}</p>
+                            {{-- <p>{{ $link->tags-> title}}</p> --}}
                             {{-- <p>{{ $link -> description}}</p> --}}
                             {{-- <p>Read more .. > </p> --}}
                         </div>

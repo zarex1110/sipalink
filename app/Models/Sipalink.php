@@ -11,9 +11,9 @@ class Sipalink extends Model
 
     protected $guarded = ['id'];
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsTo(Tag::class, 'tags_id');
     }
 
     public function user()

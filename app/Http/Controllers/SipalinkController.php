@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sipalink;
-use App\Models\Tag;
 use App\Http\Requests\StoreSipalinkRequest;
 use App\Http\Requests\UpdateSipalinkRequest;
 

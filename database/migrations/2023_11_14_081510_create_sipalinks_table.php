@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('link');
             $table->text('description');
-            $table->foreignId('tag');
+            $table->foreignId('tags_id');
             $table->foreignId('created_by');
             $table->string('image')->nullable();
         });
