@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('tags_id');
             $table->foreignId('created_by');
+            $table->integer('hit_counter');
             $table->string('image')->nullable();
         });
     }

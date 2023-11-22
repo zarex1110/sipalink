@@ -103,7 +103,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Aplikasi penilaian Kinerja Pegawai',
             'link' => 'https://webapps.bps.go.id/kipapp/',
             'tags_id' => '1',
-            'created_by' => '1'
+            'created_by' => '1',
+            'hit_counter' => 120
         ]);
 
         Sipalink::create([
@@ -111,7 +112,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Aplikasi penilaian Kepegawaian',
             'link' => 'https://simpeg.bps.go.id/',
             'tags_id' => '1',
-            'created_by' => '1'
+            'created_by' => '1',
+            'hit_counter' => 100
         ]);
 
         Sipalink::factory(50)->create();
