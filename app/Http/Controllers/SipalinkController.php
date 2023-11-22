@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sipalink;
+use App\Models\Tag;
 use App\Http\Requests\StoreSipalinkRequest;
 use App\Http\Requests\UpdateSipalinkRequest;
 
@@ -13,8 +14,17 @@ class SipalinkController extends Controller
      */
     public function index()
     {
+        $slinks = Sipalink::latest();
+
+        if(request('search')) {
+            $slinks->where('title', 'like', '%' . request('search') . '%');
+        }
+
         return view('home.sipalink.index', [
-            'links' => Sipalink::all(),
+            'slinks' => $slinks->get(),
+            'links' => Sipalink::orderBy('title')->get(),
+            'toplinks' => Sipalink::all()->take(4),
+            'tags' => Tag::all(),
         ]);
     }
 

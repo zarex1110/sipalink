@@ -57,27 +57,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tag::create([
+            'title' => 'BPS',
+            'slug' => 'bps',
+            'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
+        ]);
+        
+        Tag::create([
             'title' => 'Bagian Umum',
             'slug' => 'bagian-umum',
             'description' => 'Berisi tentang link yang digunakan oleh Bagian Umum BPS Kota Padang Panjang',
-        ]);
-
-        Tag::create([
-            'title' => 'Nerwilis',
-            'slug' => 'nerwilis',
-            'description' => 'Berisi tentang link yang digunakan oleh Nerwilis BPS Kota Padang Panjang',
-        ]);
-
-        Tag::create([
-            'title' => 'Produksi',
-            'slug' => 'produksi',
-            'description' => 'Berisi tentang link yang digunakan oleh Produksi BPS Kota Padang Panjang',
-        ]);
-
-        Tag::create([
-            'title' => 'Distribusi',
-            'slug' => 'distribusi',
-            'description' => 'Berisi tentang link yang digunakan oleh Distribusi BPS Kota Padang Panjang',
         ]);
 
         Tag::create([
@@ -93,11 +81,22 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tag::create([
-            'title' => 'BPS',
-            'slug' => 'bps',
-            'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
+            'title' => 'Produksi',
+            'slug' => 'produksi',
+            'description' => 'Berisi tentang link yang digunakan oleh Produksi BPS Kota Padang Panjang',
         ]);
 
+        Tag::create([
+            'title' => 'Nerwilis',
+            'slug' => 'nerwilis',
+            'description' => 'Berisi tentang link yang digunakan oleh Nerwilis BPS Kota Padang Panjang',
+        ]);
+
+        Tag::create([
+            'title' => 'Distribusi',
+            'slug' => 'distribusi',
+            'description' => 'Berisi tentang link yang digunakan oleh Distribusi BPS Kota Padang Panjang',
+        ]);
 
         Sipalink::create([
             'title' => 'KipApp',
