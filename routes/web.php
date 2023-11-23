@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SipalinkController;
+use App\Http\Controllers\MalinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [SipalinkController::class, 'index']);
+
+Route::get('/malink',[MalinkController::class, 'index']);
+
+Route::get('/create',function(){
+    return view('malink.create');
+});
+
+Route::get('/login',function(){
+    return view('login.login');
+});
