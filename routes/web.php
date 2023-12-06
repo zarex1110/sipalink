@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SipalinkController;
 use App\Http\Controllers\MalinkController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,14 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', [SipalinkController::class, 'index']);
+Route::get('/home', [SipalinkController::class, 'index'])->middleware('guest');
 
-Route::get('/malink',[MalinkController::class, 'index']);
+Route::get('/malink',[MalinkController::class, 'index'])->middleware('auth');
 
 Route::get('/create',function(){
     return view('malink.create');
 });
 
-Route::get('/login',function(){
-    return view('login.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);

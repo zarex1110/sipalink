@@ -145,11 +145,11 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="AdminLTE/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+        {{-- <div class="image">
+          <img src="" class="img-circle elevation-2" alt="User Image">
+        </div> --}}
         <div class="info">
-          <a href="" class="d-block">Hallo User</a>
+          <a href="" class="d-block">Hallo, {{ auth()->user()->name }}</a>
         </div>
       </div>
 
@@ -185,14 +185,17 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Logout
-                {{-- <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span> --}}
-              </p>
-            </a>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="nav-link btn">
+                    <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Logout
+                            {{-- <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">6</span> --}}
+                        </p>
+                </button>
+            </form>
         </li>
       </nav>
       <!-- /.sidebar-menu -->

@@ -37,8 +37,10 @@
 </section><!-- End Hero -->
 
 {{-- search bar --}}
-<section id="services" class="services">
+<section id="search" class="services">
     <div class="section-title">
+        <div id="pembatas" class="row mb-5">
+        </div>
         <h2>Search</h2>
         {{-- <p>Cari Link di sini !</p> --}}
     </div>
@@ -47,7 +49,7 @@
             <form action="/home">
                 <div class="input-group">
                     <input type="text" class="form-control rounded" placeholder="Search" name="search" value="{{request('search')}}" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+                    <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init onload="ScrollToTarget">search</button>
                 </div>
             </form>
         </div>
@@ -57,7 +59,7 @@
     <div class="container" data-aos="fade-up">
         <div class="row justify-content-center">
             @foreach ( $slinks as $link )
-            <div class="col-xl-3 col-sm-6 d-flex align-items-center mt-10 mt-md-0" data-aos="zoom-in"
+            <div class="col-xl-3 col-sm-6 d-flex align-items-center mt-10 mb-3 mt-md-0" data-aos="zoom-in"
                 data-aos-delay="100">
                 <div class="icon-box">
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
@@ -73,8 +75,18 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        const element = document.getElementById("search");
+        element.scrollIntoView({
+            behavior: 'instant',
+            block: 'start',
+            inline: 'start'
+        });
+    </script>
+
     @endif
-    
+
 
 </section>
 
@@ -125,7 +137,7 @@
             @foreach ( $tags as $tag )
             <li data-filter=".filter-{{$tag -> slug}}">{{$tag -> title}}</li>
             @endforeach
-            
+
         </ul>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">

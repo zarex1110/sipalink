@@ -36,7 +36,7 @@
                     </div>
                     <!-- /.info-box-content -->
                 </div>
-                
+
                 <div class="info-box">
                     <span class="info-box-icon bg-success"><i class="far fa-envelope"></i></span>
                     <div class="info-box-content">
@@ -45,10 +45,10 @@
                     </div>
                     <!-- /.info-box-content -->
                 </div>
-                
+
                 <a href="/create">
                   <button type="button" class="btn btn-block btn-primary">Tambah Link</button>
-                </a> 
+                </a>
 
               </div>
             </div>
@@ -60,12 +60,11 @@
                 <div class="card-header border-0">
                   <div class="d-flex justify-content-between">
                     <h3 class="card-title">Daftar Link</h3>
-                    <a href="javascript:void(0);">View Report</a>
                   </div>
                 </div>
 
                 <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="datalink" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                           <th>No</th>
@@ -83,10 +82,10 @@
                             <td>{{$link->link}}</td>
                             <td>{{$link->description}}</td>
                             <td>
-                                <div class="btn">
+                                <div class="btn btn-warning">
                                     Edit
                                 </div>
-                                <div class="btn">
+                                <div class="btn btn-danger">
                                     Delete
                                 </div>
                             </td>
@@ -142,10 +141,6 @@
 <!-- AdminLTE -->
 <script src="AdminLTE/dist/js/adminlte.js"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="AdminLTE/plugins/chart.js/Chart.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="AdmiunLTE/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="AdminLTE/dist/js/pages/dashboard3.js"></script>
 
@@ -165,17 +160,39 @@
 
 <!-- Page specific script -->
 <script>
-  $(function () {
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+const table = new DataTable('#datalink', {
+    paging: true,
+    ordering: true,
+    info: true,
+    lengthChange: true,
+    columnDefs: [
+        {
+            searchable: false,
+            orderable: false,
+            targets: [0,4]
+        }
+    ],
+    order: [[1, 'asc']],
+    columnDefs: [
+        {
+            width:165,
+            className: 'dt-nowrap dt-center',
+            targets: 4
+        }
+    ],
+});
+
+table
+    .on('order.dt search.dt', function () {
+        let i = 1;
+
+        table
+            .cells(null, 0, { search: 'applied', order: 'applied' })
+            .every(function (cell) {
+                this.data(i++);
+            });
+    })
+    .draw();
 </script>
 
 @endsection
