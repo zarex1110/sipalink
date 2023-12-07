@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'bps',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
         ]);
-        
+
         Tag::create([
             'title' => 'Bagian Umum',
             'slug' => 'bagian-umum',
@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Simpeg BPS',
             'description' => 'Aplikasi penilaian Kepegawaian',
             'link' => 'https://simpeg.bps.go.id/',
-            'tags_id' => '1',
+            'tags_id' => json_encode([1,2]),
             'created_by' => '1',
             'hit_counter' => 100
         ]);

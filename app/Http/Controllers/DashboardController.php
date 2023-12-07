@@ -7,23 +7,15 @@ use App\Models\Tag;
 use App\Http\Requests\StoreSipalinkRequest;
 use App\Http\Requests\UpdateSipalinkRequest;
 
-class SipalinkController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $slinks = Sipalink::latest();
-
-        if(request('search')) {
-            $slinks->where('title', 'like', '%' . request('search') . '%');
-        }
-
-        return view('home.sipalink.index', [
-            'slinks' => $slinks->get(),
-            'links' => Sipalink::orderBy('title')->get(),
-            'toplinks' => Sipalink::all()->take(4),
+        return view('dashboard.index', [
+            'links' => Sipalink::where('created_by', auth()->user()->id)->get(),
             'tags' => Tag::all(),
         ]);
     }
@@ -33,7 +25,10 @@ class SipalinkController extends Controller
      */
     public function create()
     {
-        return $request;
+        return view('dashboard.create',[
+            'links' => Sipalink::orderBy('title')->get(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -41,7 +36,7 @@ class SipalinkController extends Controller
      */
     public function store(StoreSipalinkRequest $request)
     {
-        //
+        return $request;
     }
 
     /**

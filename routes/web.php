@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SipalinkController;
-use App\Http\Controllers\MalinkController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardLinkController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -22,11 +23,13 @@ Route::get('/', function () {
 
 Route::get('/home', [SipalinkController::class, 'index'])->middleware('guest');
 
-Route::get('/malink',[MalinkController::class, 'index'])->middleware('auth');
+Route::get('/dashboard',function(){
+    return view('dashboard.dashboard');
+})->middleware('auth');
 
-Route::get('/create',function(){
-    return view('malink.create');
-});
+// Route::get('/dashboard/links/create', DashboardLinkController::class)->middleware('auth');
+
+Route::resource('/dashboard/links', DashboardLinkController::class)->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);

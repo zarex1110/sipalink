@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Sipalink;
 use App\Models\Tag;
-use App\Http\Requests\StoreSipalinkRequest;
-use App\Http\Requests\UpdateSipalinkRequest;
+use Illuminate\Http\Request;
 
-class MalinkController extends Controller
+class DashboardLinkController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('malink.index', [
-            'links' => Sipalink::orderBy('title')->get(),
+        return view('dashboard.index', [
+            'links' => Sipalink::where('created_by', auth()->user()->id)->get(),
             'tags' => Tag::all(),
         ]);
     }
@@ -25,7 +24,7 @@ class MalinkController extends Controller
      */
     public function create()
     {
-        return view('malink.create',[
+        return view('dashboard.create',[
             'links' => Sipalink::orderBy('title')->get(),
             'tags' => Tag::all(),
         ]);
@@ -34,9 +33,22 @@ class MalinkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSipalinkRequest $request)
+    public function store(Request $request)
     {
-        //
+        // return $request;
+        $validatedData = $request->validate([
+            'title' => 'required|max:255|unique:Sipalinks',
+            'link' => 'required|max:255|unique:Sipalinks',
+            'tags_id' => 'required',
+            'description' => 'required',
+            'image' => 'null'
+        ]);
+
+        $validatedData['created_by'] = auth()->user()->id;
+        $validatedData['hit_counter'] = 0;
+        $validatedData['tags_id'] = implode(", ",array_keys($validatedData['tags_id']));
+
+        Sipalink::create($validatedData);
     }
 
     /**
@@ -58,7 +70,7 @@ class MalinkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSipalinkRequest $request, Sipalink $sipalink)
+    public function update(Request $request, Sipalink $sipalink)
     {
         //
     }

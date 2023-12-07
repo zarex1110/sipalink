@@ -21,7 +21,7 @@ class SipalinkFactory extends Factory
             'description' => fake()->text(),
             'link' => fake()->name(),
             'tags_id' => rand(1,7),
-            'created_by' => '1',
+            'created_by' => rand(1,5),
             'hit_counter' => rand(0,50)
         ];
     }

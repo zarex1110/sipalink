@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('link');
             $table->text('description');
-            $table->foreignId('tags_id');
+            $table->json('tags_id');
             $table->foreignId('created_by');
             $table->integer('hit_counter');
             $table->string('image')->nullable();
