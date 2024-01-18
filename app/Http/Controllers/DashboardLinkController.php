@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sipalink;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardLinkController extends Controller
 {
@@ -13,7 +14,7 @@ class DashboardLinkController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index', [
+        return view('dashboard.links.index', [
             'links' => Sipalink::where('created_by', auth()->user()->id)->get(),
             'tags' => Tag::all(),
         ]);
@@ -24,7 +25,7 @@ class DashboardLinkController extends Controller
      */
     public function create()
     {
-        return view('dashboard.create',[
+        return view('dashboard.links.create',[
             'links' => Sipalink::orderBy('title')->get(),
             'tags' => Tag::all(),
         ]);
@@ -46,7 +47,6 @@ class DashboardLinkController extends Controller
 
         $validatedData['created_by'] = auth()->user()->id;
         $validatedData['hit_counter'] = 0;
-        $validatedData['tags_id'] = implode(", ",array_keys($validatedData['tags_id']));
 
         Sipalink::create($validatedData);
     }
@@ -54,23 +54,28 @@ class DashboardLinkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sipalink $sipalink)
+    public function show(Sipalink $link)
     {
-        //
+        return view('dashboard.links.show', [
+            'links' => $link
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sipalink $sipalink)
+    public function edit(Sipalink $link)
     {
-        //
+        return view('dashboard.links.edit', [
+            'links' => $link,
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sipalink $sipalink)
+    public function update(Request $request, Sipalink $link)
     {
         //
     }
@@ -78,8 +83,14 @@ class DashboardLinkController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sipalink $sipalink)
+    public function destroy(Sipalink $link)
     {
-        //
+        if($link->image) {
+            Storage::delete($link->image);
+        }
+
+        Sipalink::destroy($link->id);
+
+        return redirect('/dashboard/links')->with('success','Data telah dihapus!');
     }
 }

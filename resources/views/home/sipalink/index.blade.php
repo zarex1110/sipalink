@@ -63,11 +63,17 @@
                 data-aos-delay="100">
                 <div class="icon-box">
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
-                        <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
+                        <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
+                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
-                        <p>{{ substr_replace($link -> link, "...", 50) }}</p>
+
+                        @if (strlen($link -> link) < 50)
+                            <p class="mt-0 mb-0" style="text-align: center">{{ $link -> link }}</p>
+                        @else
+                            <p class="mt-0 mb-0" style="text-align: center">{{ substr_replace($link -> link, "...", 50) }}</p>
+                        @endif
+
                         {{-- <p>{{ $link -> description}}</p> --}}
                         {{-- <p>Read more .. > </p> --}}
                 </div>
@@ -105,11 +111,15 @@
                 data-aos-delay="100">
                 <div class="icon-box">
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
-                        <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-4" alt="Preview">
+                        <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
+                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
-                        <p>{{ substr_replace($link -> link, "...", 50) }}</p>
+                        @if (strlen($link -> link) < 50)
+                            <p class="mt-0 mb-0" style="text-align: center">{{ $link -> link }}</p>
+                        @else
+                            <p class="mt-0 mb-0" style="text-align: center">{{ substr_replace($link -> link, "...", 50) }}</p>
+                        @endif
                         {{-- <p>{{ $link -> description}}</p> --}}
                         {{-- <p>Read more .. > </p> --}}
                 </div>
@@ -120,7 +130,6 @@
 
     </div>
 </section><!-- End Services Section -->
-
 
 
 <!-- ======= Portfolio Section ======= -->

@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Simpeg BPS',
             'description' => 'Aplikasi penilaian Kepegawaian',
             'link' => 'https://simpeg.bps.go.id/',
-            'tags_id' => json_encode([1,2]),
+            'tags_id' => rand(1,7),
             'created_by' => '1',
             'hit_counter' => 100
         ]);

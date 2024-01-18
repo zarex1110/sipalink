@@ -5,9 +5,9 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/home" class="nav-link">Back To Homepage</a>
-      </li>
+      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="/dashboard" class="nav-link">Back To Dashboard</a>
+      </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -145,9 +145,9 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        {{-- <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
-        </div> --}}
+        <div class="image">
+          <img src="/AdminLTE/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
+        </div>
         <div class="info">
           <a href="" class="d-block">Hallo, {{ auth()->user()->name }}</a>
         </div>
@@ -156,47 +156,43 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/link" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link">
+                    <i class="nav-icon fas fa-chart-line"></i>
+                    <p>
+                    Dashboard
+                    {{-- <span class="right badge badge-danger">New</span> --}}
+                    </p>
+                </a>
+            </li>
+          <li class="nav-item">
+            <a href="/dashboard/links" class="nav-link">
+              <i class="nav-icon fas fa-link"></i>
               <p>
-                Link
-                <i class="right fas fa-angle-left"></i>
+                Kelola Link
+                {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
-            {{-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-            </ul> --}}
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="/setting" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pengaturan
-                {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit" class="nav-link btn">
-                    <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Logout
-                            {{-- <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span> --}}
-                        </p>
-                </button>
-            </form>
-        </li>
+            <a href="/logout" class="nav-link">
+                <i class="nav-icon fas fa-right-from-bracket"></i>
+                    <p>
+                        Logout
+                        {{-- <i class="fas fa-angle-left right"></i>
+                        <span class="badge badge-info right">6</span> --}}
+                    </p>
+            </a>
+          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

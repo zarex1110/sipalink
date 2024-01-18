@@ -47,7 +47,7 @@
                 </div>
 
                 <a href="/dashboard/links">
-                  <button type="button" class="btn btn-block btn-primary">Tambah Link</button>
+                  <button type="button" class="btn btn-block btn-primary">Kelola Link</button>
                 </a>
 
               </div>

@@ -27,10 +27,14 @@ Route::get('/dashboard',function(){
     return view('dashboard.dashboard');
 })->middleware('auth');
 
+Route::get('/setting',function(){
+    return view('dashboard.setting');
+})->middleware('auth');
+
 // Route::get('/dashboard/links/create', DashboardLinkController::class)->middleware('auth');
 
 Route::resource('/dashboard/links', DashboardLinkController::class)->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
