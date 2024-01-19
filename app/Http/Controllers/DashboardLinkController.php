@@ -38,8 +38,8 @@ class DashboardLinkController extends Controller
     {
         // return $request;
         $validatedData = $request->validate([
-            'title' => 'required|max:255|unique:Sipalinks',
-            'link' => 'required|max:255|unique:Sipalinks',
+            'title' => 'required|max:255|unique:sipalinks',
+            'link' => 'required|max:255|unique:sipalinks',
             'tags_id' => 'required',
             'description' => 'required',
             'image' => 'null'
@@ -49,6 +49,8 @@ class DashboardLinkController extends Controller
         $validatedData['hit_counter'] = 0;
 
         Sipalink::create($validatedData);
+
+        return redirect('/dashboard/links')->with('success','Data telah diinput!');
     }
 
     /**
@@ -77,7 +79,21 @@ class DashboardLinkController extends Controller
      */
     public function update(Request $request, Sipalink $link)
     {
-        //
+        {
+            $validatedData = $request->validate([
+                'title' => 'required|max:255',
+                'link' => 'required|max:255',
+                'tags_id' => 'required',
+                'description' => 'required',
+                'image' => 'null'
+            ]);
+
+            $validatedData['created_by'] = auth()->user()->id;
+
+            Sipalink::where('id', $link->id)->update($validatedData);
+
+            return redirect('/dashboard/links')->with('success','Data telah diubah!');
+        }
     }
 
     /**

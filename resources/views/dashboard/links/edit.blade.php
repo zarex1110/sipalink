@@ -25,7 +25,8 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="put" action="/dashboard/links/{{ $links->id }}" enctype="multipart/form-data">
+                    <form method="post" action="/dashboard/links/{{ $links->id }}" enctype="multipart/form-data">
+                        @method("put")
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -60,12 +61,12 @@
                             </div>
 
                             <div>
-                                    <div class="form-group">
-                                      <label>Tags</label>
-                                      <select class="form-control" name="tags_id"  data-placeholder="  Pilih Tags"
-                                              style="width: 100%;">
-                                        @foreach ($tags as $tag)
-                                        @if(old('tags_id', $links->tag_id) === $tag->id)
+                                <div class="form-group">
+                                    <label for="tags_id">Tags</label>
+                                    <select class="form-control @error('tags_id') is-invalid
+                                    @enderror" name="tags_id" id="tags_id" style="width: 100%;" required>
+                                    @foreach ($tags as $tag)
+                                        @if(old('tags_id', $links->tags_id) == $tag->id)
                                             <option value="{{ $tag->id }}" selected>
                                             {{ $tag->title }}
                                             </option>
@@ -74,9 +75,12 @@
                                             {{ $tag->title }}
                                             </option>
                                         @endif
-                                        @endforeach
-                                      </select>
-                                    </div>
+                                    @endforeach
+                                    @error('type_id')
+                                    {{ $message }}
+                                    @enderror
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">

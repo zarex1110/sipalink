@@ -17,11 +17,11 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/home', [SipalinkController::class, 'index'])->middleware('guest');
+Route::get('/', [SipalinkController::class, 'index'])->middleware('guest');
 
 Route::get('/dashboard',function(){
     return view('dashboard.dashboard');

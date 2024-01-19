@@ -64,7 +64,15 @@
                                       <select class="form-control" name="tags_id"  data-placeholder="  Pilih Tags"
                                               style="width: 100%;">
                                         @foreach ($tags as $tag)
-                                            <option value = {{$tag->id}}> {{ $tag->title }}</option>
+                                            @if(old('tags_id') == $tag->id)
+                                            <option value="{{ $tag->id }}" selected>
+                                            {{ $tag->title }}
+                                            </option>
+                                            @else
+                                            <option value="{{ $tag->id }}">
+                                            {{ $tag->title }}
+                                            </option>
+                                            @endif
                                         @endforeach
                                       </select>
                                     </div>

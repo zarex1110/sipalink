@@ -46,7 +46,7 @@
     </div>
     <div class="row d-flex justify-content-center align-items-center mb-5">
         <div class="col-md-6">
-            <form action="/home">
+            <form action="/">
                 <div class="input-group">
                     <input type="text" class="form-control rounded" placeholder="Search" name="search" value="{{request('search')}}" aria-label="Search" aria-describedby="search-addon" />
                     <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init onload="ScrollToTarget">search</button>
@@ -65,7 +65,14 @@
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                         <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
+                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="
+                            @if (str_starts_with( $link -> link, 'http'))
+                                {{ $link -> link }}
+                            @else
+                                {{ 'https://'.$link -> link }}
+                            @endif
+                            "
+                             target="_blank">{{ $link -> title }}</a></h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
 
                         @if (strlen($link -> link) < 50)
@@ -113,7 +120,13 @@
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                         <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h4>
+                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="
+                            @if (str_starts_with( $link -> link, 'http'))
+                            {{ $link -> link }}
+                            @else
+                            {{ 'https://' . $link -> link }}
+                            @endif
+                            " target="_blank">{{ $link -> title }}</a></h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
                         @if (strlen($link -> link) < 50)
                             <p class="mt-0 mb-0" style="text-align: center">{{ $link -> link }}</p>
@@ -158,7 +171,13 @@
                             {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                             <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
 
-                            <h5 class="mt-0 mb-0"><a href="{{ $link -> link }}" target="_blank">{{ $link -> title }}</a></h5>
+                            <h5 class="mt-0 mb-0"><a href="
+                                @if (str_starts_with( $link -> link, 'http'))
+                                {{ $link -> link }}
+                                @else
+                                {{ 'https://' . $link -> link }}
+                                @endif
+                                " target="_blank">{{ $link -> title }}</a></h5>
 
                             <p class="mt-0 mb-0">{{ $link -> link }}</p>
                             {{-- <p>Read more .. > </p> --}}
