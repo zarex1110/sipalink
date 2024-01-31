@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'link' => 'https://webapps.bps.go.id/kipapp/',
             'tags_id' => '1',
             'created_by' => '1',
-            'hit_counter' => 120,
+            'hit_counter' => 0,
             'vpn' => true
         ]);
 
@@ -88,10 +88,10 @@ class DatabaseSeeder extends Seeder
             'link' => 'https://simpeg.bps.go.id/',
             'tags_id' => '1',
             'created_by' => '1',
-            'hit_counter' => 100,
+            'hit_counter' => 0,
             'vpn' => true
         ]);
 
-        Sipalink::factory(50)->create();
+        Sipalink::factory(10)->create();
     }
 }

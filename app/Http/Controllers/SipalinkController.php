@@ -49,6 +49,8 @@ class SipalinkController extends Controller
      */
     public function show($id)
     {
+        Sipalink::where('id', $id)->increment('hit_counter',1);
+
         return view('home.sipalink.show', [
             'links' => Sipalink::findOrFail($id)
         ]);

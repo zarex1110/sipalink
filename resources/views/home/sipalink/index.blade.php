@@ -62,11 +62,12 @@
             <div class="col-xl-3 col-sm-6 d-flex align-items-center mt-10 mb-3 mt-md-0" data-aos="zoom-in"
                 data-aos-delay="100">
                 <a href="
-                    @if (str_starts_with( $link -> link, 'http'))
+                    {{-- @if (str_starts_with( $link -> link, 'http'))
                         {{ $link -> link }}
                     @else
                         {{ 'https://'.$link -> link }}
-                    @endif
+                    @endif --}}
+                    {{ url("/links/$link->id") }}
                     "
                         target="_blank">
                     <div class="icon-box hovernow">
@@ -118,15 +119,16 @@
         </div>
 
         <div class="row">
-            @foreach ( $links->take(4) as $link )
+            @foreach ( $links->sortByDesc('hit_counter')->take(4) as $link )
             <div class="col-xl-3 col-sm-6 g-col-6 g-col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                 data-aos-delay="100">
                 <a href="
-                    @if (str_starts_with( $link -> link, 'http'))
+                    {{-- @if (str_starts_with( $link -> link, 'http'))
                     {{ $link -> link }}
                     @else
                     {{ 'https://' . $link -> link }}
-                    @endif
+                    @endif --}}
+                    {{ url("/links/$link->id") }}
                     " target="_blank">
                 <div class="icon-box hovernow">
                         @if ($link->vpn == "1")
