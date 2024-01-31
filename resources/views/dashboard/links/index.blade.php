@@ -8,8 +8,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Link</h1>
+                        <h1 class="m-0">Manage Link</h1>
                     </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                          <li class="breadcrumb-item"><a href="{{ url("/dashboard") }}">Dashboard</a></li>
+                          <li class="breadcrumb-item active">Manage Link</li>
+                        </ol>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -18,6 +24,13 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                @if(session()->has("success"))
+                    <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-check"></i> Informasi </h5>
+                      {{ session('success') }}
+                    </div>
+                @endif
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card">
@@ -167,5 +180,7 @@
             .draw();
 
     </script>
+
+
 
 @endsection

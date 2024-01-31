@@ -170,7 +170,7 @@
             <a href={{ url("/dashboard/links")}} class="nav-link">
               <i class="nav-icon fas fa-link"></i>
               <p>
-                Kelola Link
+                Manage Link
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>

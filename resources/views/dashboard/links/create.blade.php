@@ -11,6 +11,13 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Create New Link</h1>
                     </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                          <li class="breadcrumb-item"><a href="{{ url("/dashboard") }}">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a href="{{ url("/dashboard/links") }}">Manage Link</a></li>
+                          <li class="breadcrumb-item active">Create Link</li>
+                        </ol>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>

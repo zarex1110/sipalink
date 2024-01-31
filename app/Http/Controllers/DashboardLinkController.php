@@ -57,7 +57,7 @@ class DashboardLinkController extends Controller
 
         Sipalink::create($validatedData);
 
-        return redirect('/dashboard/links')->with('success','Data telah diinput!');
+        return redirect('/dashboard/links')->with('success','Data telah berhasil diinput!');
     }
 
     /**
@@ -101,11 +101,11 @@ class DashboardLinkController extends Controller
             else
                 $validatedData['vpn'] = false;
 
-            $validatedData['created_by'] = auth()->user()->id;
+                $validatedData['created_by'] = auth()->user()->id;
 
-            Sipalink::where('id', $link->id)->update($validatedData);
+                Sipalink::where('id', $link->id)->update($validatedData);
 
-            return redirect('/dashboard/links')->with('success','Data telah diubah!');
+            return redirect('/dashboard/links')->with('success','Data telah berhasil diubah!');
         }
     }
 
@@ -120,6 +120,6 @@ class DashboardLinkController extends Controller
 
         Sipalink::destroy($link->id);
 
-        return redirect('/dashboard/links')->with('success','Data telah dihapus!');
+        return redirect('/dashboard/links')->with('success','Data telah berhasil dihapus!');
     }
 }
