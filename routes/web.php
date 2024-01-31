@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SipalinkController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardLinkController;
-use App\Http\Controllers\LoginController;
+// use App\Http\Controllers\LoginController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +24,26 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [SipalinkController::class, 'index'])->middleware('guest');
 
-Route::get('/dashboard',function(){
-    return view('dashboard.dashboard');
-})->middleware('auth');
+Route::get('/links/{id}', [SipalinkController::class, 'show'])->middleware('guest');
 
-Route::get('/setting',function(){
+// Route::get('/dashboard',function(){
+//     return view('dashboard.dashboard');
+// })->middleware('auth');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard.dashboard');
+})->name('dashboard');
+
+Route::get('/dashboard/setting',function(){
     return view('dashboard.setting');
-})->middleware('auth');
+})->middleware(['auth:sanctum', 'verified']);
 
 // Route::get('/dashboard/links/create', DashboardLinkController::class)->middleware('auth');
 
-Route::resource('/dashboard/links', DashboardLinkController::class)->middleware('auth');
+Route::resource('/dashboard/links', DashboardLinkController::class)->middleware(['auth:sanctum', 'verified']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::get('/logout', [LoginController::class, 'logout']);
+// Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+// Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);

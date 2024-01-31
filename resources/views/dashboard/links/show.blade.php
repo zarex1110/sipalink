@@ -1,3 +1,5 @@
+{{-- {{dd($links->vpn)}} --}}
+
 @extends('dashboard.layouts.main')
 
 @section('container')
@@ -26,18 +28,32 @@
 
                               <hr>
 
-                              <strong><i class="fas fa-circle-info"></i> Deskripsi</strong>
-                              <p class="text-muted">{{ $links->description }}</p>
-
-                              <hr>
-
                               <strong><i class="fa-solid fa-tag mr-1"></i> Tag</strong>
                               <p class="text-muted"> {{ $links->tags->title }} </p>
 
                               <hr>
 
-                              <strong><i class="fa-solid fa-calendar-days mr-1"></i> Tanggal Dibuat</strong>
-                              <p class="text-muted"> {{ $links->created_at }} </p>
+                              <strong><i class="fas fa-circle-info"></i> Deskripsi</strong>
+                              <p class="text-muted">{{ $links->description }}</p>
+
+                              <hr>
+
+                              <strong><i class="fa-solid fa-globe mr-1"></i> VPN</strong>
+                              @if ($links->vpn == 1)
+                                <p class="text-muted"> Harus menggunakan VPN </p>
+                              @else
+                                <p class="text-muted"> Tanpa VPN </p>
+                              @endif
+
+                              <hr>
+
+                              <strong><i class="fa-solid fa-calendar-days mr-1"></i> Updated By </strong>
+                              <p class="text-muted"> {{ $links->user->fullname }} at {{ $links->updated_at }} </p>
+
+                              <hr>
+
+                              <strong><i class="fa-solid fa-calendar-days mr-1"></i> Created By </strong>
+                              <p class="text-muted"> {{ $links->user->fullname }} at {{ $links->created_at }} </p>
 
                               <hr>
 
@@ -49,10 +65,10 @@
                     </div><!-- /.col -->
                     <div class="col-sm-4">
                         <h1 class="mb-4"> <span> &#8203; </span> </h1>
-                        <a href="/dashboard/links/{{ $links->id }}/edit" class="btn btn-app bg-warning">
+                        <a href={{ url("/dashboard/links/$links->id/edit") }} class="btn btn-app bg-warning">
                             <i class="fas fa-edit"></i> Edit
                         </a>
-                        <form action="/dashboard/links/{{ $links->id }}" method="post" class='d-inline'>
+                        <form action={{ url("/dashboard/links/$links->id") }} method="post" class='d-inline'>
                             @method('delete')
                             @csrf
                             <button class="btn btn-app bg-danger" onclick="return confirm('Are you sure?')">
@@ -71,35 +87,18 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src={{ asset("/AdminLTE/plugins/jquery/jquery.min.js") }}></script>
     <!-- Bootstrap -->
-    <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src={{ asset("/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js") }}></script>
     <!-- AdminLTE -->
-    <script src="/AdminLTE/dist/js/adminlte.js"></script>
+    <script src={{ asset("/AdminLTE/dist/js/adminlte.js") }}></script>
 
     <!-- OPTIONAL SCRIPTS -->
-    <script src="/AdminLTE/plugins/chart.js/Chart.min.js"></script>
+    <script src={{ asset("/AdminLTE/plugins/chart.js/Chart.min.js") }}></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="/AdmiunLTE/dist/js/demo.js"></script>
+    <script src={{ asset("/AdmiunLTE/dist/js/demo.js") }}></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/AdminLTE/dist/js/pages/dashboard3.js"></script>
-
-    <!-- DataTables  & Plugins -->
-    <script src="/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/jszip/jszip.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <!-- Select2 -->
-    <script src="/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
+    <script src={{ asset("/AdminLTE/dist/js/pages/dashboard3.js") }}></script>
 
     <!-- Page specific script -->
     <script>

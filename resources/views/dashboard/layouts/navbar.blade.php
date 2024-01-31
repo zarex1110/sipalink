@@ -136,8 +136,8 @@
   <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/dashboard" class="brand-link">
-      <img src="/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href={{ url("/dashboard") }} class="brand-link">
+      <img src={{ asset("/AdminLTE/dist/img/AdminLTELogo.png") }} alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Manajemen Link</span>
     </a>
 
@@ -146,10 +146,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/AdminLTE/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
+          <img src={{ asset("/AdminLTE/dist/img/user.png") }} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">Hallo, {{ auth()->user()->name }}</a>
+          {{-- <a href="" class="d-block">Hallo, {{ explode(' ', trim(auth()->user()->fullname))[0] }}</a> --}}
+          <a href="" class="d-block">Hi, {{ auth()->user()->fullname }}</a>
         </div>
       </div>
 
@@ -157,7 +158,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="/dashboard" class="nav-link">
+                <a href={{ url("/dashboard") }} class="nav-link">
                     <i class="nav-icon fas fa-chart-line"></i>
                     <p>
                     Dashboard
@@ -166,7 +167,7 @@
                 </a>
             </li>
           <li class="nav-item">
-            <a href="/dashboard/links" class="nav-link">
+            <a href={{ url("/dashboard/links")}} class="nav-link">
               <i class="nav-icon fas fa-link"></i>
               <p>
                 Kelola Link
@@ -175,7 +176,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/setting" class="nav-link">
+            <a href={{url("/setting")}} class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pengaturan
@@ -183,7 +184,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/logout" class="nav-link">
+            <a href={{ url("/logout") }} class="nav-link">
                 <i class="nav-icon fas fa-right-from-bracket"></i>
                     <p>
                         Logout

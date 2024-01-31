@@ -15,44 +15,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'bps',
-            'username' => 'bps1374',
+            'fullname' => 'Zaky Imadudin Salam',
+            'username' => 'zakyimad',
+            'email' => 'zakyimad@bps.go.id',
+            'nip' => '199910112023021001',
             'password' => bcrypt('admin')
         ]);
 
         User::create([
-            'name' => 'pengolahan',
-            'username' => 'ipds1374',
-            'password' => bcrypt('admin')
-        ]);
-
-        User::create([
-            'name' => 'nerwilis',
-            'username' => 'nerwilis1374',
-            'password' => bcrypt('admin')
-        ]);
-
-        User::create([
-            'name' => 'produksi',
-            'username' => 'produksi1374',
-            'password' => bcrypt('admin')
-        ]);
-
-        User::create([
-            'name' => 'distribusi',
-            'username' => 'distribusi1374',
-            'password' => bcrypt('admin')
-        ]);
-
-        User::create([
-            'name' => 'sosial',
-            'username' => 'sosial1374',
-            'password' => bcrypt('admin')
-        ]);
-
-        User::create([
-            'name' => 'bagianumum',
-            'username' => 'sektoral1374',
+            'fullname' => 'Easbi Ikhsan',
+            'username' => 'easbi',
+            'email' => 'easbi@bps.go.id',
+            'nip' => '199610112023021002',
             'password' => bcrypt('admin')
         ]);
 
@@ -104,16 +78,18 @@ class DatabaseSeeder extends Seeder
             'link' => 'https://webapps.bps.go.id/kipapp/',
             'tags_id' => '1',
             'created_by' => '1',
-            'hit_counter' => 120
+            'hit_counter' => 120,
+            'vpn' => true
         ]);
 
         Sipalink::create([
             'title' => 'Simpeg BPS',
             'description' => 'Aplikasi penilaian Kepegawaian',
             'link' => 'https://simpeg.bps.go.id/',
-            'tags_id' => rand(1,7),
+            'tags_id' => '1',
             'created_by' => '1',
-            'hit_counter' => 100
+            'hit_counter' => 100,
+            'vpn' => true
         ]);
 
         Sipalink::factory(50)->create();

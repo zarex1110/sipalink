@@ -47,9 +47,12 @@ class SipalinkController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sipalink $sipalink)
+    public function show($id)
     {
-        //
+        return view('home.sipalink.show', [
+            'links' => Sipalink::findOrFail($id)
+        ]);
+
     }
 
     /**

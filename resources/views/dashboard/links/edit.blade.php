@@ -1,3 +1,5 @@
+{{-- {{ dd($links->vpn)}} --}}
+
 @extends('dashboard.layouts.main')
 
 @section('container')
@@ -25,7 +27,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="/dashboard/links/{{ $links->id }}" enctype="multipart/form-data">
+                    <form method="post" action={{ url("/dashboard/links/$links->id") }} enctype="multipart/form-data">
                         @method("put")
                         @csrf
                         <div class="card-body">
@@ -58,6 +60,16 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type='hidden' class="custom-control-input" id="vpnhidden" name="vpn" value="0">
+                                    <input type="checkbox" class="custom-control-input" id="vpn" name="vpn" value="1"
+                                    {{ old('vpn',$links->vpn) == '1' ? 'checked' : '' }}>
+                                    {{-- @if(old('vpn',$links->vpn)==="on") checked @endif> --}}
+                                <label class="custom-control-label" for="vpn">Harus menggunakan VPN</label>
+                                </div>
                             </div>
 
                             <div>
@@ -141,35 +153,21 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/jquery/jquery.min.js")}}></script>
     <!-- Bootstrap -->
-    <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js")}}></script>
     <!-- AdminLTE -->
-    <script src="/AdminLTE/dist/js/adminlte.js"></script>
+    <script src={{asset("/AdminLTE/dist/js/adminlte.js")}}></script>
 
     <!-- OPTIONAL SCRIPTS -->
-    <script src="/AdminLTE/plugins/chart.js/Chart.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/chart.js/Chart.min.js")}}></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="/AdmiunLTE/dist/js/demo.js"></script>
+    <script src={{asset("/AdmiunLTE/dist/js/demo.js")}}></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/AdminLTE/dist/js/pages/dashboard3.js"></script>
-
-    <!-- DataTables  & Plugins -->
-    <script src="/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/jszip/jszip.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src={{asset("/AdminLTE/dist/js/pages/dashboard3.js")}}></script>
 
     <!-- Select2 -->
-    <script src="/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/select2/js/select2.full.min.js")}}></script>
 
     <!-- Page specific script -->
     <script>

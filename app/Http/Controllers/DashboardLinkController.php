@@ -15,7 +15,8 @@ class DashboardLinkController extends Controller
     public function index()
     {
         return view('dashboard.links.index', [
-            'links' => Sipalink::where('created_by', auth()->user()->id)->get(),
+            // 'links' => Sipalink::where('created_by', auth()->user()->id)->get(),
+            'links' => Sipalink::orderBy('updated_at','desc')->get(),
             'tags' => Tag::all(),
         ]);
     }
@@ -42,8 +43,14 @@ class DashboardLinkController extends Controller
             'link' => 'required|max:255|unique:sipalinks',
             'tags_id' => 'required',
             'description' => 'required',
-            'image' => 'null'
+            'image' => 'null',
+            'vpn' => 'required'
         ]);
+
+        if ($validatedData['vpn'] == "1")
+            $validatedData['vpn'] = true;
+        else
+            $validatedData['vpn'] = false;
 
         $validatedData['created_by'] = auth()->user()->id;
         $validatedData['hit_counter'] = 0;
@@ -85,8 +92,14 @@ class DashboardLinkController extends Controller
                 'link' => 'required|max:255',
                 'tags_id' => 'required',
                 'description' => 'required',
+                'vpn' => 'required',
                 'image' => 'null'
             ]);
+
+            if ($validatedData['vpn'] == "1")
+                $validatedData['vpn'] = true;
+            else
+                $validatedData['vpn'] = false;
 
             $validatedData['created_by'] = auth()->user()->id;
 

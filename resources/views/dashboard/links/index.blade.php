@@ -22,7 +22,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="/dashboard/links/create">
+                                <a href={{ url("/dashboard/links/create")}}>
                                     <button type="button" class="btn btn-block btn-primary col-md-2">Tambah Link</button>
                                 </a>
                             </div>
@@ -55,17 +55,17 @@
                                             <td>{{$link->description}}</td>
                                             <td>{{$link->tags->title}}</td>
                                             <td>
-                                                <a href="/dashboard/links/{{ $link->id }}" class="btn btn-info">
-                                                    Show
+                                                <a href={{ url("/dashboard/links/$link->id") }} class="btn btn-info">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="/dashboard/links/{{ $link->id }}/edit" class="btn btn-warning">
-                                                    Edit
+                                                <a href={{url("/dashboard/links/$link->id/edit")}} class="btn btn-warning">
+                                                    <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="/dashboard/links/{{ $link->id }}" method="post" class='d-inline'>
+                                                <form action={{ url("/dashboard/links/$link->id") }} method="post" class='d-inline'>
                                                     @method('delete')
                                                     @csrf
                                                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
-                                                        Delete
+                                                        <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>
                                             </td>
@@ -99,28 +99,28 @@
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/jquery/jquery.min.js")}}></script>
     <!-- Bootstrap -->
-    <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js")}}></script>
     <!-- AdminLTE -->
-    <script src="/AdminLTE/dist/js/adminlte.js"></script>
+    <script src={{asset("/AdminLTE/dist/js/adminlte.js")}}></script>
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/AdminLTE/dist/js/pages/dashboard3.js"></script>
+    <script src={{asset("/AdminLTE/dist/js/pages/dashboard3.js")}}></script>
 
     <!-- DataTables  & Plugins -->
-    <script src="/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/AdminLTE/plugins/jszip/jszip.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/AdminLTE/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src={{asset("/AdminLTE/plugins/datatables/jquery.dataTables.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/jszip/jszip.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/pdfmake/pdfmake.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/pdfmake/vfs_fonts.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js")}}></script>
+    <script src={{asset("/AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js")}}></script>
 
     <!-- Page specific script -->
     <script>
@@ -137,13 +137,18 @@
                 orderable: false,
                 targets: [0, -1]
             }],
-            order: [
-                [1, 'asc']
-            ],
+            // order: [
+            //    [1, 'asc']
+            //],
             columnDefs: [{
                 className: 'dt-nowrap dt-center',
                 targets: -1
             }],
+            // columnDefs: [{
+            //     max-width: 20%,
+            //     width: 20%,
+            //     targets: 0
+            // }],
         });
 
         table

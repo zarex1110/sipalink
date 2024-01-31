@@ -24,7 +24,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" action="/dashboard/links">
+                    <form method="post" action={{ url("/dashboard/links")}}>
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -56,6 +56,14 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type='hidden' class="custom-control-input" id="vpnhidden" name="vpn" value="0">
+                                    <input type="checkbox" class="custom-control-input" id="vpn" name="vpn" value="1" @checked(old('vpn'))>
+                                <label class="custom-control-label" for="vpn">Harus menggunakan VPN</label>
+                                </div>
                             </div>
 
                             <div>
