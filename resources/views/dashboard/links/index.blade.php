@@ -66,7 +66,7 @@
                                             <td>{{$link->title}}</td>
                                             <td>{{$link->link}}</td>
                                             <td>{{$link->description}}</td>
-                                            <td>{{$link->tags->title}}</td>
+                                            <td><span class="badge" style="font-size: 1em; background-color: {{ $link->tags->color }}; color: white; ">{{$link->tags->title}}</span></td>
                                             <td>
                                                 <a href={{ url("/dashboard/links/$link->id") }} class="btn btn-info">
                                                     <i class="fas fa-eye"></i>
@@ -77,7 +77,7 @@
                                                 <form action={{ url("/dashboard/links/$link->id") }} method="post" class='d-inline'>
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                                    <button class="btn btn-danger" onclick="return confirm('Yakin akan menghapus Link ini?')">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>

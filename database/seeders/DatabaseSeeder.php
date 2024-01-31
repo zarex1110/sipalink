@@ -34,24 +34,28 @@ class DatabaseSeeder extends Seeder
             'title' => 'BPS',
             'slug' => 'bps',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
+            'color' => 'black'
         ]);
 
         Tag::create([
             'title' => 'Bagian Umum',
             'slug' => 'bagian-umum',
             'description' => 'Berisi tentang link yang digunakan oleh Bagian Umum BPS Kota Padang Panjang',
+            'color' => 'blue'
         ]);
 
         Tag::create([
             'title' => 'Pengolahan',
             'slug' => 'pengolahan',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
+            'color' => 'green'
         ]);
 
         Tag::create([
             'title' => 'Sosial',
             'slug' => 'sosial',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
+            'color' => 'red'
         ]);
 
         Tag::create([
