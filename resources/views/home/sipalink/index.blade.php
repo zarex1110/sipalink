@@ -137,13 +137,7 @@
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                         <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4 class="mt-0 mb-0" style="text-align: center"><a href="
-                            @if (str_starts_with( $link -> link, 'http'))
-                            {{ $link -> link }}
-                            @else
-                            {{ 'https://' . $link -> link }}
-                            @endif
-                            " target="_blank">{{ $link -> title }}</h4>
+                        <h4 class="mt-0 mb-0" style="text-align: center">{{ $link -> title }}</h4>
                         {{-- <p>{{ $link -> link }}</p> --}}
                         @if (strlen($link -> link) < 30)
                             <p class="mt-0 mb-0" style="text-align: center; color : black">{{ $link -> link }}</p>

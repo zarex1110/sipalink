@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Tag::create([
-            'title' => 'Pengolahan',
+            'title' => 'IPDS',
             'slug' => 'pengolahan',
             'description' => 'Berisi tentang link yang digunakan oleh IPDS BPS Kota Padang Panjang',
             'color' => 'green'
