@@ -30,9 +30,7 @@ Route::get('/links/{id}', [SipalinkController::class, 'show'])->middleware('gues
 //     return view('dashboard.dashboard');
 // })->middleware('auth');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard.dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/setting',function(){
     return view('dashboard.setting');

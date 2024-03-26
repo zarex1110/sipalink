@@ -77,7 +77,7 @@
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                         <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4 class="mt-0 mb-0" style="text-align: center">{{ $link -> title }}</h4>
+                        <h5 class="mt-0 mb-0" style="text-align: center;">{{ $link -> title }}</h5>
                         {{-- <p>{{ $link -> link }}</p> --}}
 
                         @if (strlen($link -> link) < 30)
@@ -137,7 +137,7 @@
                         {{-- <div class="icon"><i class="bx bxl-dribbble"></i></div> --}}
                         <img src="assets/img/logo/{{$link->tags->slug}}.png" class="img-thumbnail mt-0 mb-2" alt="Preview">
                         {{-- {{ image($link-> link) }} --}}
-                        <h4 class="mt-0 mb-0" style="text-align: center">{{ $link -> title }}</h4>
+                        <h5 class="mt-0 mb-0" style="text-align: center;">{{ $link -> title }}</h5>
                         {{-- <p>{{ $link -> link }}</p> --}}
                         @if (strlen($link -> link) < 30)
                             <p class="mt-0 mb-0" style="text-align: center; color : black">{{ $link -> link }}</p>
@@ -211,5 +211,26 @@
 
     </div>
 </section><!-- End Portfolio Section -->
+
+<script>
+    $.fn.fitToWidth=function(){
+    $(this).wrapInner("<span style='display:inline;font:inherit;white-space:inherit;'></span>").each(function(){
+        var $t=$(this);
+        var a=$t.outerWidth(),
+            $s=$t.children("span"),
+            f=parseFloat($t.css("font-size"));
+        while($t.children("span").outerWidth() > a) $t.css("font-size",--f);
+        $t.html($s.html());
+    });
+    }
+
+    $(function(){
+        $("h5").fitToWidth();
+    });
+
+    $(function(){
+        $("h4").fitToWidth();
+    });
+</script>
 
 @endsection

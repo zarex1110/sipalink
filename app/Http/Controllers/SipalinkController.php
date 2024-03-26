@@ -23,7 +23,7 @@ class SipalinkController extends Controller
         return view('home.sipalink.index', [
             'slinks' => $slinks->get(),
             'links' => Sipalink::orderBy('title')->get(),
-            'toplinks' => Sipalink::all()->take(4),
+            'toplinks' => Sipalink::orderBy('hit_counter', 'DESC')->take(4),
             'tags' => Tag::all(),
         ]);
     }
